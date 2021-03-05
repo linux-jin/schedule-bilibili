@@ -37,10 +37,9 @@ const send = require('./api/notice');
     console.info(`----- 执行 ${task.getTaskName()} -----`);
     const r = await task.run();
     tipStr += `----- 执行 ${task.getTaskName()}成功 -----<br/>`
-        console.info(`----- ${tipStr} -----`);
     if (r === false) {
       break;
     }
   }
-  await send(serverSecret,'哔哩哔哩签到脚本',`${tipStr}`);
+  send(serverSecret,'哔哩哔哩签到脚本',`${tipStr}`);
 })();
