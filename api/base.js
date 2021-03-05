@@ -43,7 +43,6 @@ class Base {
         headers,
         params,
       });
-      await send(this.secret,'哔哩哔哩签到脚本','恭喜您，哔哩哔哩已成功签到！');
     } catch (e) {
       await send();
     }
