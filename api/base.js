@@ -26,6 +26,7 @@ class Base {
     this.userAgent =
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15';
     this.cookie = user.cookie;
+    this.secret = user.serverSecret;
   }
 
   async get(url, params = {}, field = '') {
@@ -42,6 +43,7 @@ class Base {
         headers,
         params,
       });
+      await send(this.secret,'哔哩哔哩签到脚本','恭喜您，哔哩哔哩已成功签到！');
     } catch (e) {
       await send();
     }
