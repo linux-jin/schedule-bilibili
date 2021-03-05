@@ -2,6 +2,7 @@ const tasks = require('./task');
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
+const send = require('./api/notice');
 
 (async function () {
   const [cookie, serverSecret] = process.argv.slice(2);
@@ -38,4 +39,5 @@ const _ = require('lodash');
       break;
     }
   }
+  await send(serverSecret,'哔哩哔哩签到脚本','恭喜您，哔哩哔哩已成功签到！');
 })();
