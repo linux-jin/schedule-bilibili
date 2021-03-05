@@ -5,6 +5,7 @@ const _ = require('lodash');
 const send = require('./api/notice');
 
 (async function () {
+  let tipStr = '';
   const [cookie, serverSecret] = process.argv.slice(2);
   console.log('cookie, serverSecret: ', cookie, serverSecret);
 
@@ -35,9 +36,11 @@ const send = require('./api/notice');
     console.info('\n');
     console.info(`----- 执行 ${task.getTaskName()} -----`);
     const r = await task.run();
+    tipStr += `----- 执行 ${task.getTaskName()}成功 -----<br/>`
+        console.info(`----- ${tipStr} -----`);
     if (r === false) {
       break;
     }
   }
-  await send(serverSecret,'哔哩哔哩签到脚本','恭喜您，哔哩哔哩已成功签到！');
+  await send(serverSecret,'哔哩哔哩签到脚本',`${tipStr}`);
 })();
