@@ -4,6 +4,8 @@
 name: SCHEDULE-NEW
 
 on:
+  watch:
+    types: started
   push:
     branches:
       - master
